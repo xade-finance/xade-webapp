@@ -4,14 +4,14 @@
   padding-top: 10px;
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   background-color: rgba(250, 250, 250, 0.5);
   height: 5rem;
 }
 
 .middle-aligned {
-  width: 90%;
+  width: 80%;
   display: flex;
   justify-content: space-between;
 }
@@ -20,7 +20,7 @@
   padding: 0;
   margin-top: 0;
   display: inline-block;
-  margin-left: 4.2rem;
+
   font-size: 1.4rem;
   height: 20%;
   font-family: "Sora", sans-serif;
