@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/static/css/main.98190eaf.css",
-    "main.js": "/static/js/main.772a8984.js",
+    "main.css": "/static/css/main.223c0f4d.css",
+    "main.js": "/static/js/main.a306abb9.js",
     "static/media/LEMONMILK-Regular.otf": "/static/media/LEMONMILK-Regular.55fc24317b9c2b507dd8.otf",
     "index.html": "/index.html",
-    "main.98190eaf.css.map": "/static/css/main.98190eaf.css.map",
-    "main.772a8984.js.map": "/static/js/main.772a8984.js.map"
+    "main.223c0f4d.css.map": "/static/css/main.223c0f4d.css.map",
+    "main.a306abb9.js.map": "/static/js/main.a306abb9.js.map"
   },
   "entrypoints": [
-    "static/css/main.98190eaf.css",
-    "static/js/main.772a8984.js"
+    "static/css/main.223c0f4d.css",
+    "static/js/main.a306abb9.js"
   ]
 }
