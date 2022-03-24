@@ -7,7 +7,7 @@ class Titlebar extends Component {
       <div className = "nav-bar">
             <div className = "middle-aligned">
                 <p className = 'nav-home'><img className = 'svg-adjust rest-adjust' src = {process.env.PUBLIC_URL + '/images/home.svg'} /></p>
-            <p className = 'nav-deposit'><img className = 'nav-deposit-img svg-adjust' src = {process.env.PUBLIC_URL + '/images/plus.svg'} /></p>
+            <p className = 'nav-deposit'><img className = 'nav-deposit-img ' src = {process.env.PUBLIC_URL + '/images/plus.svg'} /></p>
                 <p className = 'nav-investments'><img className = 'svg-adjust rest-adjust' src = {process.env.PUBLIC_URL + '/images/stonks.svg'} /></p>
                 
             </div>
