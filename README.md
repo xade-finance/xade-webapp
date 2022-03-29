@@ -1,4 +1,5 @@
-# xade-webapp
-Official Xade Web Application
+# Xade
 
-yes
+### Launching on April 15th!
+
+***
