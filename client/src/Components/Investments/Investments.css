@@ -23,6 +23,7 @@ table {
 }
 
 .search-bar {
+  display: flex;
   width: 60%;
   height: 3rem;
   border-radius: 100px;
@@ -35,18 +36,21 @@ table {
   /* justify-content: center;s */
 }
 
-.input-text {
+.input-text-investments {
+  display: inline;
   box-sizing: border-box;
   width: 90%;
   height: 2.9rem;
   border: none;
+  padding: none;
+  margin: none;
   padding-left: 1.5rem;
   border-radius: 90px;
   font-size: 1.3rem;
   font-family: "Sora";
 }
 
-.input-text:focus {
+.input-text-investments:focus {
   outline: none;
 }
 
@@ -58,5 +62,42 @@ table {
 
 .closed-adjust {
   width: 2rem;
-  color: red;
 }
+
+.input-submit-investments:focus {
+  outline: none;
+}
+
+.investments-ticker img {
+  width: 2rem;
+  border-radius: 2rem;
+}
+
+.input-submit-investments {
+  /* background: url("https://www.nicepng.com/png/detail/65-659698_search-icon-without-background.png"); */
+  background: transparent;
+  position: relative;
+  display: inline;
+  border: 0;
+  width: 3rem;
+  height: 1.8rem;
+  margin: none;
+  padding: none;
+  background-size: contain;
+  background-repeat: no-repeat;
+  border: none;
+  top: 7px;
+}
+
+.search-adjust-investments {
+  width: 1.69rem;
+}
+
+/* .investments-background {
+  width: 100%;
+  position: absolute;
+  background: url("bg.png");
+  background-size: cover;
+  height: 50%;
+  opacity: 0.6;
+} */

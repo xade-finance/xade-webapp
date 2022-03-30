@@ -8,12 +8,10 @@ let date = new Date().toISOString().slice(0, 10)
 
 const SearchBar = () => {
   return <div className = 'search-bar-center'>
-        <div className = 'search-bar'>
-          <form>
-          <input type="text" className = 'input-text' placeholder='Search for Crypto, Stocks, Commodities, Forex' />
-          <input type="submit" className = 'input-submit'/>
+        <form className = 'search-bar'>
+          <input type="text" className = 'input-text-investments' placeholder='Search for Crypto, Stocks, Commodities, Forex' />
+          <button type="submit" className = 'input-submit-investments' value = ""><img className = 'search-adjust-investments' src = {process.env.PUBLIC_URL + '/images/search.svg'}/></button>
           </form>
-        </div>
     </div>
 }
 
@@ -41,6 +39,10 @@ export default function Investments() {
   }
 
   return (
+    <>
+    <div className = "investments-background">
+
+    </div>
     <div
       style={{
         display: 'flex',
@@ -50,6 +52,8 @@ export default function Investments() {
         fontFamily: "Sora",
       }}
     >
+      
+
 
       <DateModule />
       <SearchBar />
@@ -57,6 +61,7 @@ export default function Investments() {
       <table>
         <thead className = "investments-head">
           <tr>
+            <td className = "investments-head-items"></td>
             <td className = "investments-head-items">Symbol</td>
             <td className = "investments-head-items">Name</td>
             <td className = "investments-head-items">Price</td>
@@ -67,9 +72,10 @@ export default function Investments() {
           {list.map((registrar: Registrar, index: number) => (
             <>
             <tr key={index}>
+              <td className = "investments-body-items investments-ticker"><img alt = '' src = {`${process.env.PUBLIC_URL}/images/tickers/${registrar.ticker}.png`}/></td>
               <td className = "investments-body-items">{registrar.ticker}</td>
               <td className = "investments-body-items">{registrar.name}</td>
-              <td className = "investments-body-items">{registrar.open ? registrar.price : <img className = 'closed-adjust' alt = 'closed' src = {process.env.PUBLIC_URL + '/images/closed.png'}/>}</td>
+              <td className = "investments-body-items">{registrar.open ? parseFloat(registrar.price).toFixed(2).toString() : <img className = 'closed-adjust' alt = 'closed' src = {process.env.PUBLIC_URL + '/images/closed.png'}/>}</td>
               
             </tr>
             <br />
@@ -78,5 +84,6 @@ export default function Investments() {
         </tbody>
       </table>
     </div>
+    </>
   )
 }
