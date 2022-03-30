@@ -2,7 +2,24 @@ import React from 'react'
 
 import { SupportedChainId, Registrar } from '@deusfinance/synchronizer-sdk'
 import { hooks, Muon } from '../../DEUS/Synchronizer'
+import './Investments.css'
 
+let date = new Date().toISOString().slice(0, 10)
+
+const SearchBar = () => {
+  return <div className = 'search-bar-center'>
+        <div className = 'search-bar'>
+          <form>
+          <input type="text" className = 'input-text' placeholder='Search for Crypto, Stocks, Commodities, Forex' />
+          <input type="submit" className = 'input-submit'/>
+          </form>
+        </div>
+    </div>
+}
+
+const DateModule = () => {
+  return <h1 className = 'date-investment'>{date.toLocaleString()}</h1>
+}
 
 /*
  * Internal data is updated once every 60 secondes. If you want access to the
@@ -30,51 +47,33 @@ export default function Investments() {
         flexFlow: 'column',
         margin: '50px 10%',
         justifyContent: 'center',
+        fontFamily: "Sora",
       }}
     >
-      <div
-        onClick={forceRefresh}
-        style={{
-          margin: '50px auto',
-        }}
-      >
-        Click to force a refresh (check the console for feedback)
-      </div>
-      <div
-        onClick={getSignatures}
-        style={{
-          margin: '50px auto',
-        }}
-      >
-        Click to receive signatures. Only use this feature to gather contract calldata.
-      </div>
+
+      <DateModule />
+      <SearchBar />
+      <br /> <br /> <br /> <br /> 
       <table>
-        <thead>
+        <thead className = "investments-head">
           <tr>
-            <td>ticker</td>
-            <td>name</td>
-            <td>type</td>
-            <td>sector</td>
-            <td>fee</td>
-            <td>price</td>
-            <td>state</td>
-            <td>contract</td>
-            <td>sibling</td>
+            <td className = "investments-head-items">Symbol</td>
+            <td className = "investments-head-items">Name</td>
+            <td className = "investments-head-items">Price</td>
           </tr>
         </thead>
+          <br />
         <tbody>
           {list.map((registrar: Registrar, index: number) => (
+            <>
             <tr key={index}>
-              <td>{registrar.ticker}</td>
-              <td>{registrar.name}</td>
-              <td>{registrar.direction}</td>
-              <td>{registrar.sector}</td>
-              <td>{registrar.fee.toSignificant()}%</td>
-              <td>{registrar.price}</td>
-              <td>{registrar.open ? '' : 'Market is Closed'}</td>
-              <td>{registrar.contract}</td>
-              <td>{registrar.sibling}</td>
+              <td className = "investments-body-items">{registrar.ticker}</td>
+              <td className = "investments-body-items">{registrar.name}</td>
+              <td className = "investments-body-items">{registrar.open ? registrar.price : <img className = 'closed-adjust' alt = 'closed' src = {process.env.PUBLIC_URL + '/images/closed.png'}/>}</td>
+              
             </tr>
+            <br />
+           </>
           ))}
         </tbody>
       </table>
