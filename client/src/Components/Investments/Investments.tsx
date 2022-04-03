@@ -1,19 +1,10 @@
 import React from 'react'
-
+import { useState, useEffect } from 'react'
+// import list from './functions'
+import './Investments.css'
 import { SupportedChainId, Registrar } from '@deusfinance/synchronizer-sdk'
 import { hooks, Muon } from '../../DEUS/Synchronizer'
-import './Investments.css'
-
 let date = new Date().toISOString().slice(0, 10)
-
-const SearchBar = () => {
-  return <div className = 'search-bar-center'>
-        <form className = 'search-bar'>
-          <input type="text" className = 'input-text-investments' placeholder='Search for Crypto, Stocks, Commodities, Forex' />
-          <button type="submit" className = 'input-submit-investments' value = ""><img className = 'search-adjust-investments' src = {process.env.PUBLIC_URL + '/images/search.svg'}/></button>
-          </form>
-    </div>
-}
 
 const DateModule = () => {
   return <h1 className = 'date-investment'>{date.toLocaleString()}</h1>
@@ -24,20 +15,27 @@ const DateModule = () => {
  * latest information - for instance a real-time oracle quote - you could
  * call forceRefresh.
  */
+
+
 export default function Investments() {
-  const list = hooks.useRegistrars(SupportedChainId.FANTOM)
+  const [query, setQuery] = useState('');
+  let list = hooks.useRegistrars(SupportedChainId.FANTOM)
   console.log(list)
-  const forceRefresh = hooks.useForceRefreshCallback()
-
-  const getSignatures = async () => {
-    const result = await Muon.getSignatures(
-      '0x082e19213683E1CD3E80634761283e99542c9198',
-      'buy',
-      SupportedChainId.FANTOM
-    )
-    console.log(result)
+  let [newList, setNewList] = useState(list);
+  // useEffect(() => {
+  //   setList(hooks.useRegistrars(SupportedChainId.FANTOM))
+  // })
+    
+    const handleChange = (e: React.FormEvent<HTMLInputElement>): void => {
+      setQuery(e.currentTarget.value)
+      e.preventDefault();
+      if(e.currentTarget.value == '')
+      {
+        setNewList(list)
+        return;
+      }
+      setNewList(list.filter((registrar: Registrar, index: number) => (registrar.name.toLowerCase().includes(e.currentTarget.value.toLowerCase()) || registrar.ticker.toLowerCase().includes(e.currentTarget.value.toLowerCase()))))
   }
-
   return (
     <>
     <div className = "investments-background">
@@ -56,7 +54,12 @@ export default function Investments() {
 
 
       <DateModule />
-      <SearchBar />
+      <div className = 'search-bar-center'>
+        <form className = 'search-bar' onSubmit = {(e: React.SyntheticEvent) => e.preventDefault()} >
+          <input type="text" onChange = {handleChange} className = 'input-text-investments' placeholder='Search for Crypto, Stocks, Commodities, Forex' />
+          <button type="submit" className = 'input-submit-investments' value = ""><img className = 'search-adjust-investments' src = {process.env.PUBLIC_URL + '/images/search.svg'}/></button>
+          </form>
+    </div>
       <br /> <br /> <br /> <br /> 
       <table>
         <thead className = "investments-head">
@@ -69,7 +72,7 @@ export default function Investments() {
         </thead>
           <br />
         <tbody>
-          {list.map((registrar: Registrar, index: number) => (
+          {((((newList.length > 0 && query != '')) ? newList:list)).map((registrar: Registrar, index: number) => (
             <>
             <tr key={index}>
               <td className = "investments-body-items investments-ticker"><img alt = '' src = {`${process.env.PUBLIC_URL}/images/tickers/${registrar.ticker}.png`}/></td>
@@ -80,7 +83,7 @@ export default function Investments() {
             </tr>
             <br />
            </>
-          ))}
+          )) }
         </tbody>
       </table>
     </div>

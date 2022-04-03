@@ -1,4 +1,4 @@
-import { Main } from './module-manager'
+import { Main, Link } from './module-manager'
 
 
 function App() {
