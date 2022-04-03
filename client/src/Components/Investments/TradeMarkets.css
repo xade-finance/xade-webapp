@@ -1,0 +1,92 @@
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@200&display=swap");
+
+.trade-markets-center {
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.trade-markets {
+    width: 50%;
+}   
+.trade-market-data {
+    background-color: rgb(152, 251, 152, 0.04);
+    border-radius: 2rem;
+    display: flex;
+    height: 10rem;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 2%;
+}
+
+
+.investment-direction {
+    height: 3rem;
+    width: 100%;
+    font-size: 1.4rem;
+    font-family: 'Sora';
+    display: flex;
+    direction: row;
+    justify-content: center;
+    /* align-items: center; */
+    /* background-color: black;  */
+}
+
+.long-direction, .short-direction {
+    height: 100%;
+    width: 40%;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 3rem;
+    border: 1px;
+    background-color: #EFFFFD;
+}
+
+.long-direction {
+border-top-left-radius: 2rem;
+border-bottom-left-radius: 2rem;
+}
+
+.short-direction
+{
+border-top-right-radius: 2rem;
+border-bottom-right-radius: 2rem;
+}
+
+.direction-selected {
+    background-color: #BFFFF0;
+}
+
+
+.conversion-dollar {
+        height: 3rem;
+        width: 80%;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 3rem;
+        border: 1px;
+        border-radius: 1rem;
+        font-size: 1.5rem;
+        font-family: "Sora";
+        background-color: rgba(214, 229, 250, 0.1);
+        margin-top: 1rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+}
+
+.conversion-dollar-form {
+    margin-left: 0.5rem;
+    width: 7rem;
+    height: 3rem;
+    border: none;
+    font-size: 1.5rem;
+    background: rgba(214, 229, 250, 0.1);
+}
+
+.conversion-dollar-form:focus {
+    outline: none;
+}

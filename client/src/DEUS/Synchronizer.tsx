@@ -1,3 +1,5 @@
+export * from '@deusfinance/synchronizer-sdk'
+
 import { createSynchronizer, SupportedChainId, MuonClient } from '@deusfinance/synchronizer-sdk'
 import { configureStore } from '@reduxjs/toolkit'
 

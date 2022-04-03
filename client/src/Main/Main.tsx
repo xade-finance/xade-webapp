@@ -1,4 +1,4 @@
-import { React, Titlebar, Navbar, Investments, useMediaQuery} from './../module-manager'
+import { React, Titlebar, Navbar, Investments, useMediaQuery, Trade, Route, Routes, BrowserRouter, Login, Link } from './../module-manager'
 
 
 function Main() {
@@ -8,8 +8,14 @@ function Main() {
      <section>
        <Navbar />
        {isTabletOrMobile && <Titlebar />}
-
-       <Investments />
+  
+  <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Login />} />
+      <Route path="investments" element={<Investments />} />
+      <Route path="trade/:id" element={<Trade />} />
+    </Routes>
+  </BrowserRouter>
        
      </section>
   );

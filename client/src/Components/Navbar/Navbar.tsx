@@ -1,5 +1,5 @@
 import './../../Style/Navbar.css'
-import {React} from './../../module-manager'
+import { React, Link } from './../../module-manager'
 
 class Navbar extends React.Component {
     render() {
@@ -7,7 +7,9 @@ class Navbar extends React.Component {
         <div className = "title-bar">
             <div className = "left-aligned">
                 <p className = 'logo'>Xade</p>
-                <p className = 'click-home' onClick = {() => {console.log('hi')}}>Home</p>
+                <p className = 'click-home' onClick = {() => {console.log('hi')}}>
+                    Home
+                </p>
                 <p className = 'click-investments'>Investments</p>
                 <p className = 'click-deposit'>Deposit / Withdraw</p>
                 <p className = 'click-offers'>Offers</p>
