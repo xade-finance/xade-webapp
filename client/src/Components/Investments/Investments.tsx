@@ -73,6 +73,7 @@ export default function Investments() {
           <br />
         <tbody>
           {((((newList.length > 0 && query != '')) ? newList:list)).map((registrar: Registrar, index: number) => (
+            <a href = `/trade/${registrar.contract}`
             <>
             <tr key={index}>
               <td className = "investments-body-items investments-ticker"><img alt = '' src = {`${process.env.PUBLIC_URL}/images/tickers/${registrar.ticker}.png`}/></td>
@@ -81,6 +82,7 @@ export default function Investments() {
               <td className = "investments-body-items">{registrar.open ? parseFloat(registrar.price).toFixed(2).toString() : <img className = 'closed-adjust' alt = 'closed' src = {process.env.PUBLIC_URL + '/images/closed.png'}/>}</td>
               
             </tr>
+            </a>
             <br />
            </>
           )) }
