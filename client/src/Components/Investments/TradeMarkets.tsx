@@ -19,13 +19,17 @@ const Trade = () => {
     return (
     <div className="trade-markets-center">
        <div className = 'trade-markets'> 
-        <div className = 'chart-market'>
-            <SymbolOverview colorTheme="light"
+       <SymbolOverview colorTheme="light"
             width = '50vw'
-            symbols = {[[list.name, list.ticker]]}
+
             downColor="#800080"
             borderDownColor="#800080"
-            wickDownColor="#800080" /> 
+            wickDownColor="#800080"
+            autosize
+            chartType="candlesticks"
+            scaleMode ="normal"
+        /> 
+        <div className = 'chart-market'>
         </div>
         <div className = 'trade-market-data'>
         <div className = 'investment-direction'>
