@@ -10,6 +10,7 @@
 
 .trade-markets {
     width: 50%;
+    height: 100%;
 }   
 .trade-market-data {
     background-color: rgb(152, 251, 152, 0.04);

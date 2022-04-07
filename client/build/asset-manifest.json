@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/static/css/main.eb4c188e.css",
+    "main.js": "/static/js/main.ab2c0b4c.js",
+    "static/media/LEMONMILK-Regular.otf": "/static/media/LEMONMILK-Regular.55fc24317b9c2b507dd8.otf",
+    "index.html": "/index.html",
+    "main.eb4c188e.css.map": "/static/css/main.eb4c188e.css.map",
+    "main.ab2c0b4c.js.map": "/static/js/main.ab2c0b4c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.eb4c188e.css",
+    "static/js/main.ab2c0b4c.js"
+  ]
+}
