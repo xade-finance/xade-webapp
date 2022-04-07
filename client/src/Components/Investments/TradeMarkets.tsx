@@ -12,29 +12,33 @@ const Trade = () => {
     const list = hooks.useRegistrarByContract(id, SUPPORTED_CHAIN_ID) || {
         'ticker': 'AAPL', 
         'name': 'Apple',
-        'direction': 'LONG'
+        'direction': 'LONG',
+        'sibling': '0x399aeb2FF88cD66564ee1BCc03185Ca5d712572B'
     }
 
-    // console.log(list)
+    console.log(list)
     return (
     <div className="trade-markets-center">
        <div className = 'trade-markets'> 
        <SymbolOverview colorTheme="light"
             width = '50vw'
-
+            symbols = {[[list.name, list.ticker]]}
             downColor="#800080"
             borderDownColor="#800080"
             wickDownColor="#800080"
             autosize
-            chartType="candlesticks"
+            chartType="area"
             scaleMode ="normal"
         /> 
+        <br /> <br />
         <div className = 'chart-market'>
         </div>
         <div className = 'trade-market-data'>
         <div className = 'investment-direction'>
-            <div className = {`long-direction ${list.direction === 'LONG'? 'direction-selected': ""}`}>LONG</div>
-            <div className = {`short-direction ${list.direction === 'SHORT'? 'direction-selected': ""}`}>SHORT</div>
+      <div className = {`long-direction ${list.direction === 'LONG'? 'direction-selected': ""}`}><a href = {`/trade/${list.sibling}`}>LONG</a></div>
+    <div className = {`short-direction ${list.direction === 'SHORT'? 'direction-selected': ""}`}>   <a href = {`/trade/${list.sibling}`}>SHORT</a></div>
+
+            {/* <div className = {`short-direction ${list.direction === 'SHORT'? 'direction-selected': ""}`}>SHORT</div> */}
         </div>
         <div className = 'conversion-dollar'><p className = 'conversion-dollar-amount'>Enter amount in</p><input className = 'conversion-dollar-form'type = 'number' placeholder = '$'></input></div>
         <div className = 'conversion-dollar'><p className = 'conversion-dollar-amount'>Enter amount in</p></div>

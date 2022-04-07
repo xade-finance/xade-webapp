@@ -22,6 +22,17 @@ export default function Investments() {
   let list = hooks.useRegistrars(SupportedChainId.FANTOM)
   console.log(list)
   let [newList, setNewList] = useState(list);
+
+   const buttonHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+
+    const button: HTMLButtonElement = event.currentTarget;
+
+
+
+  };
+
+
   // useEffect(() => {
   //   setList(hooks.useRegistrars(SupportedChainId.FANTOM))
   // })
@@ -65,27 +76,26 @@ export default function Investments() {
         <thead className = "investments-head">
           <tr>
             <td className = "investments-head-items"></td>
-            <td className = "investments-head-items">Symbol</td>
-            <td className = "investments-head-items">Name</td>
-            <td className = "investments-head-items">Price</td>
+            <td className = "investments-head-items"><a href = '#'>Symbol</a></td>
+            <td className = "investments-head-items"><a href = '#'>Name</a></td>
+            <td className = "investments-head-items"><a href = '#'>Price</a></td>
           </tr>
         </thead>
           <br />
         <tbody>
           {((((newList.length > 0 && query != '')) ? newList:list)).map((registrar: Registrar, index: number) => (
-            // <a href = `/trade/${registrar.contract}`
-            <>
+           registrar.direction == 'LONG'? ( <>
+                       
             <tr key={index}>
+
               <td className = "investments-body-items investments-ticker"><img alt = '' src = {`${process.env.PUBLIC_URL}/images/tickers/${registrar.ticker}.png`}/></td>
-              <td className = "investments-body-items">{registrar.ticker}</td>
-              <td className = "investments-body-items">{registrar.name}</td>
-              <td className = "investments-body-items">{registrar.open ? parseFloat(registrar.price).toFixed(2).toString() : <img className = 'closed-adjust' alt = 'closed' src = {process.env.PUBLIC_URL + '/images/closed.png'}/>}</td>
-              
+              <td className = "investments-body-items"><a href = {`/trade/${registrar.contract}`}>{registrar.ticker}</a></td>
+              <td className = "investments-body-items"><a href = {`/trade/${registrar.contract}`}>{registrar.name}</a></td>
+              <td className = "investments-body-items"><a href = {`/trade/${registrar.contract}`}>{registrar.open ? parseFloat(registrar.price).toFixed(2).toString() : <img className = 'closed-adjust' alt = 'closed' src = {process.env.PUBLIC_URL + '/images/closed.png'}/>}</a></td>
             </tr>
-            {/* </a> */}
-            <br />
-           </>
-          )) }
+           <br />
+         </>
+          ):'')) }
         </tbody>
       </table>
     </div>
