@@ -31,6 +31,28 @@
   font-family: "Sora", sans-serif;
 }
 
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  color: hotpink;
+}
+
+a{
+  text-decoration: none;
+  transition: 0.4s ease;
+  padding: 0;
+  margin-top: 0;
+  display: inline-block;
+  margin-left: 4.2rem;
+  font-size: 1.4rem;
+  height: 20%;
+  font-family: "Sora", sans-serif;
+}
+
+
+
 .left-aligned .logo {
   height: 4rem;
   font-family: LemonMilk;
