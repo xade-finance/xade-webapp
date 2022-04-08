@@ -16,7 +16,7 @@ tbody tr {
 }
 
 td {
-  padding-left: 1rem;
+  padding-left: 0rem;
 }
 table {
   border-collapse: collapse;
@@ -28,11 +28,15 @@ table {
   height: 3rem;
   border-radius: 100px;
   border: 1px solid #707070;
+  
 }
 
 .search-bar-center {
-  display: flex;
-  width: 100%;
+ display: inline-block;
+ padding: 0%;
+ align-content: center;
+ padding-bottom: 2rem;
+ 
   /* justify-content: center;s */
 }
 
@@ -129,5 +133,31 @@ a {
 a:hover 
 { 
   color: inherit;
+}
+
+
+@media screen and (max-width: 640px){
+  .search-bar-center{
+     padding: 70px 0;
+    text-align: center;
+  } 
+  .search-bar{
+    width: 80%;
+    align-content: right;
+  }
+
+  .investments-body-name {
+    display: none;
+  }
+  
+  .investments-head-name {
+    display: none;
+  }
+ 
+  table{
+    width: 80%;
+    padding-left: 0%;
+  }
+
 }
 
