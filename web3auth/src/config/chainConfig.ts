@@ -1,14 +1,14 @@
 import { CHAIN_NAMESPACES, CustomChainConfig } from "@web3auth/base";
 
 export const CHAIN_CONFIG = {
-  polygon: {
+  fantom: {
     chainNamespace: CHAIN_NAMESPACES.EIP155,
-    rpcTarget: "https://polygon-rpc.com",
-    blockExplorer: "https://polygonscan.com/",
-    chainId: "0x89",
-    displayName: "Polygon Mainnet",
-    ticker: "matic",
-    tickerName: "Matic",
+    rpcTarget: "https://rpc.ftm.tools/",
+    blockExplorer: "https://ftmscan.com/",
+    chainId: "0xfa",
+    displayName: "Fantom Opera",
+    ticker: "FTM",
+    tickerName: "FTM",
   } as CustomChainConfig,
 } as const;
 

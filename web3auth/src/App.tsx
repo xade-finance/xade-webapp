@@ -10,7 +10,7 @@ import Main from "./components/Main";
 
 function App() {
   const [web3AuthNetwork, setWeb3AuthNetwork] = useState<WEB3AUTH_NETWORK_TYPE>("mainnet");
-  const [chain, setChain] = useState<CHAIN_CONFIG_TYPE>("polygon");
+  const [chain, setChain] = useState<CHAIN_CONFIG_TYPE>("fantom");
 
   return (
     <div className={styles.container}>

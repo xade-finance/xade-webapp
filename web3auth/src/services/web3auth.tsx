@@ -143,7 +143,10 @@ export const Web3AuthProvider: FunctionComponent<IWeb3AuthState> = ({ children, 
       return;
     }
     const user = await web3Auth.getUserInfo();
-    uiConsole(user);
+    const json = JSON.stringify(user || {}, null, 2);
+    alert(json);
+    window.alert = function() {};
+    // uiConsole(user);
   };
 
   const getAccounts = async () => {
@@ -174,10 +177,7 @@ export const Web3AuthProvider: FunctionComponent<IWeb3AuthState> = ({ children, 
   };
 
   const uiConsole = (...args: unknown[]): void => {
-    const el = document.querySelector("#console>p");
-    if (el) {
-      el.innerHTML = JSON.stringify(args || {}, null, 2);
-    }
+     // alert(JSON.stringify(args || {}, null, 2));
   };
 
   const contextProvider = {

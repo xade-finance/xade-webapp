@@ -15,40 +15,57 @@ const Main = () => {
   }
 
   const loggedInView = (
-    <>
-      <head>
-      <title>Xade | Dashboard</title>
-      </head>
-
-      <div className={styles.logindone}>
-      <h1 className={styles.dash}>Dashboard</h1>
-      <div className={styles.logindone2}>
-      <div className={styles.console} id="console">
-        <p className={styles.code}></p>
-      </div>
-      <button onClick={getUserInfo} className={styles.loggedIn}>
-        <b>Get User Info</b>
-      </button>
-      {/*<br/>
-      <br/>
-      <button onClick={getAccounts} className={styles.loggedIn}>
-        <b>Get Accounts</b>
-      </button>
-      <br/>
-      <br/>
-      <button onClick={getBalance} className={styles.loggedIn}>
-        <b>Get Balance</b>
-      </button>*/}
-      <br/>
-      <br/>
-      <button onClick={logout} className={styles.loggedIn}>
-        <b>Log Out</b>
-      </button>
-      </div>
-      </div>
-      
-    </>
+    getUserInfo()
   );
+
+//     <>
+//     <script>
+//     alert("hello");
+//     </script> 
+//       <head>
+//       <title>Xade | Dashboard</title>
+//       </head>
+// {/*      <body onLoad={getUserInfo}>
+// */}{/*      {{getUserInfo()}}
+// */}      <div className={styles.logindone}>
+// {/*<script> 
+// window.onload = function() {
+//   {getUserInfo()}
+// }*/}
+// {/*</script>*/}
+//       <h1 className={styles.dash}>Dashboard</h1>
+//       <div className={styles.logindone2}>
+//       <div className={styles.console} id="console">
+//         <p className={styles.code}></p>
+//       </div>
+//       <script src="details.js"></script>
+//       <button id="mybtn" onClick={getUserInfo} className={styles.loggedIn}>
+//         <b>Get User Info</b>
+//       </button>
+//       <div>
+//       </div>
+
+//       {/*<br/>
+//       <br/>
+//       <button onClick={getAccounts} className={styles.loggedIn}>
+//         <b>Get Accounts</b>
+//       </button>
+//       <br/>
+//       <br/>
+//       <button onClick={getBalance} className={styles.loggedIn}>
+//         <b>Get Balance</b>
+//       </button>*/}
+//       <br/>
+//       <br/>
+//       <button onClick={logout} className={styles.loggedIn}>
+//         <b>Log Out</b>
+
+//       </button>
+//       </div>
+
+//       </div>
+//           </>
+//   );
 
   const unloggedInView = (
 
@@ -71,7 +88,6 @@ const Main = () => {
         <img src="https://dashboard.web3auth.io/img/login-twitter.d24e7883.svg"/>
       </button>
       </div>
-      
      <form onSubmit={(e)=>handleLoginWithEmail(e)} className={styles.login2}>
         <input type={'email'} placeholder={'Enter your email'} className={styles.input} />
         <button type="submit" className={styles.continue}><b>Continue</b></button>

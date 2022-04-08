@@ -5,9 +5,6 @@ import styles from "../styles/Home.module.css";
 import { Web3AuthContext } from "../services/web3auth";
 import { useContext } from "react";
 
-var network = "mainnet";
-var blockchain = "polygon"
-
 interface IProps {
   setNetwork: (network: WEB3AUTH_NETWORK_TYPE) => void;
   setChain: (chain: CHAIN_CONFIG_TYPE) => void;
@@ -27,7 +24,7 @@ const Setting = ({ setNetwork, setChain }: IProps) => {
   const isLoggedIn = provider !== null;
 
   return (
-
+    
     <div className={styles.hide}>
       <div className={styles.row}>
         <label htmlFor="network" className={styles.label}>
