@@ -87,7 +87,10 @@ button {
   position: relative;
   top: 3px;
 }
-
+  .click-settings {
+    position: relative;
+    bottom: 5px;
+  }
 @media screen and (min-width: 1100px) and (max-width: 1300px) {
   .left-aligned .logo {
     margin-right: 5%;

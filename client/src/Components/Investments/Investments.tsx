@@ -62,15 +62,12 @@ export default function Investments() {
       }}
     >
       
-
-
-      
       <div className = 'search-bar-center'>
 
       <DateModule />
 
         <form className = 'search-bar' onSubmit = {(e: React.SyntheticEvent) => e.preventDefault()} >
-          <input type="text" onChange = {handleChange} className = 'input-text-investments' placeholder='Search for Crypto, Stocks, Commodities, Forex' />
+          <input value = {query} type="text" onChange = {handleChange} className = 'input-text-investments' placeholder='Search for Crypto, Stocks, Commodities, Forex' />
           <button type="submit" className = 'input-submit-investments' value = ""><img className = 'search-adjust-investments' src = {process.env.PUBLIC_URL + '/images/search.svg'}/></button>
           </form>
     </div>
