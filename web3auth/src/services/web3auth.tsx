@@ -8,6 +8,10 @@ import { CHAIN_CONFIG, CHAIN_CONFIG_TYPE } from "../config/chainConfig";
 import { WEB3AUTH_NETWORK_TYPE } from "../config/web3AuthNetwork";
 import { getWalletProvider, IWalletProvider } from "./walletProvider";
 
+
+var i = 0;
+var done = false;
+
 export interface IWeb3AuthContext {
   web3Auth: Web3AuthCore | null;
   provider: IWalletProvider | null;
@@ -137,6 +141,7 @@ export const Web3AuthProvider: FunctionComponent<IWeb3AuthState> = ({ children, 
   };
 
   const getUserInfo = async () => {
+
     if (!web3Auth) {
       console.log("web3auth not initialized yet");
       uiConsole("web3auth not initialized yet");
@@ -144,10 +149,23 @@ export const Web3AuthProvider: FunctionComponent<IWeb3AuthState> = ({ children, 
     }
     const user = await web3Auth.getUserInfo();
     const json = JSON.stringify(user || {}, null, 2);
-    alert(json);
+    // const uri: string = "mongodb://127.0.0.1:27017/xade";
+
+    
     window.alert = function() {};
-    // uiConsole(user);
+    if(done === false)
+{
+
+  var request = new XMLHttpRequest();
+request.open("POST", 'http://localhost:8000');
+request.send(json);
+      done = true;
+}
+
+// window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
   };
+
+
 
   const getAccounts = async () => {
     if (!provider) {
