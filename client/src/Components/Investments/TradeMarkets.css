@@ -96,3 +96,24 @@ border-bottom-right-radius: 2rem;
 .conversion-dollar-form:focus {
     outline: none;
 }
+
+
+@media screen and (max-width: 640px){
+
+    .trade-markets {
+        width: 100%;
+        height: 100%;
+        padding-bottom: 20px;
+    }
+
+    .trade-market-data {
+    background-color: rgb(152, 251, 152, 0.04);
+    border-radius: 2rem;
+    display: flex;
+    height: 10rem;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10%;
+    padding-bottom: 50%;
+}
+}

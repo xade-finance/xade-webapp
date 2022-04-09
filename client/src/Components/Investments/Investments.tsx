@@ -56,7 +56,7 @@ export default function Investments() {
       style={{
         display: 'flex',
         flexFlow: 'column',
-        margin: '50px 10%',
+        margin: '30px 10%',
         justifyContent: 'center',
         fontFamily: "Sora",
       }}
@@ -64,21 +64,26 @@ export default function Investments() {
       
 
 
-      <DateModule />
+      
       <div className = 'search-bar-center'>
+
+      <DateModule />
+
         <form className = 'search-bar' onSubmit = {(e: React.SyntheticEvent) => e.preventDefault()} >
           <input type="text" onChange = {handleChange} className = 'input-text-investments' placeholder='Search for Crypto, Stocks, Commodities, Forex' />
           <button type="submit" className = 'input-submit-investments' value = ""><img className = 'search-adjust-investments' src = {process.env.PUBLIC_URL + '/images/search.svg'}/></button>
           </form>
     </div>
-      <br /> <br /> <br /> <br /> 
-      <table>
+      {/* <br /> <br /> <br /> <br />  */}
+
+      <div className='table-main' >
+      <table >
         <thead className = "investments-head">
           <tr>
-            <td className = "investments-head-items"></td>
-            <td className = "investments-head-items"><a href = '#'>Symbol</a></td>
-            <td className = "investments-head-items"><a href = '#'>Name</a></td>
-            <td className = "investments-head-items"><a href = '#'>Price</a></td>
+            <td className = "investments-head-image"></td>
+            <td className = "investments-head-symbol"><a href = '#'>Symbol</a></td>
+            <td className = "investments-head-name"><a href = '#'>Name</a></td>
+            <td className = "investments-head-price"><a href = '#'>Price</a></td>
           </tr>
         </thead>
           <br />
@@ -88,16 +93,17 @@ export default function Investments() {
                        
             <tr key={index}>
 
-              <td className = "investments-body-items investments-ticker"><img alt = '' src = {`${process.env.PUBLIC_URL}/images/tickers/${registrar.ticker}.png`}/></td>
-              <td className = "investments-body-items"><a href = {`/trade/${registrar.contract}`}>{registrar.ticker}</a></td>
-              <td className = "investments-body-items"><a href = {`/trade/${registrar.contract}`}>{registrar.name}</a></td>
-              <td className = "investments-body-items"><a href = {`/trade/${registrar.contract}`}>{registrar.open ? parseFloat(registrar.price).toFixed(2).toString() : <img className = 'closed-adjust' alt = 'closed' src = {process.env.PUBLIC_URL + '/images/closed.png'}/>}</a></td>
+              <td className = "investments-body-image investments-ticker"><img alt = '' src = {`${process.env.PUBLIC_URL}/images/tickers/${registrar.ticker}.png`}/></td>
+              <td className = "investments-body-symbol"><a href = {`/trade/${registrar.contract}`}>{registrar.ticker}</a></td>
+              <td className = "investments-body-name"><a href = {`/trade/${registrar.contract}`}>{registrar.name}</a></td>
+              <td className = "investments-body-price"><a href = {`/trade/${registrar.contract}`}>{registrar.open ? parseFloat(registrar.price).toFixed(2).toString() : <img className = 'closed-adjust' alt = 'closed' src = {process.env.PUBLIC_URL + '/images/closed.png'}/>}</a></td>
             </tr>
            <br />
          </>
           ):'')) }
         </tbody>
       </table>
+      </div>
     </div>
     </>
   )
