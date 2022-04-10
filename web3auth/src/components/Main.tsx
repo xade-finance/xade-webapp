@@ -67,13 +67,6 @@ const Main = () => {
 //           </>
 //   );
 
-  const dataWeStore  = async () => {
-
-    var data = `We ONLY store the associated email address, username, profile picture and the social login you used.`;
-    alert(data);
-  };
-
-
   const unloggedInView = (
 
 
