@@ -1,3 +1,4 @@
+import ComingSoon from '../Components/Coming Soon/ComingSoon';
 import { React, Titlebar, Navbar, Investments, useMediaQuery, Trade, Route, Routes, BrowserRouter, Login, Link } from './../module-manager'
 
 
@@ -14,6 +15,7 @@ function Main() {
       <Route path="/" element={<Login />} />
       <Route path="investments" element={<Investments />} />
       <Route path="trade/:id" element={<Trade />} />
+      <Route path="comingsoon" element={<ComingSoon />} />
     </Routes>
   </BrowserRouter>
        

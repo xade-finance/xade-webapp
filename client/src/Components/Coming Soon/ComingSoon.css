@@ -1,0 +1,48 @@
+@font-face {
+    font-family: LemonMilk;
+    src: url("../../fonts/lemon_milk/LEMONMILK-Regular.otf");
+  }
+/* Set height to 100% for body and html to enable the background image to cover the whole page: */
+body, html {
+    height: 100%
+  }
+  
+  
+  
+  /* Position text in the top-left corner */
+  .topleft {
+    position: absolute;
+    top: 0;
+    left: 16px;
+  }
+  
+  /* Position text in the bottom-left corner */
+  .bottomleft {
+    position: absolute;
+    bottom: 0;
+    left: 16px;
+  }
+  
+  /* Position text in the middle */
+  .middle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-family: "Sora", sans-serif;
+    font-size: 2.4rem;
+    height: 20%;
+  }
+
+  @media screen and (max-width: 640px){
+    .middle{
+        font-size: 1.4rem;
+    }
+}
+  
+  /* Style the <hr> element */
+  hr {
+    margin: auto;
+    width: 40%;
+  }
