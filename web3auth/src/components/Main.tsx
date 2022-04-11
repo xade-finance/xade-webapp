@@ -14,9 +14,9 @@ const Main = () => {
     login(WALLET_ADAPTERS.OPENLOGIN, "email_passwordless", email);
   }
 
-  const loggedInView() => (
+  const loggedInView = () => {
     getUserInfo()
-  );
+ }
 
 //     <>
 //     <script>
