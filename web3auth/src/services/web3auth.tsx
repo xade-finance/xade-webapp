@@ -149,10 +149,9 @@ export const Web3AuthProvider: FunctionComponent<IWeb3AuthState> = ({ children, 
     }
     const user = await web3Auth.getUserInfo();
     const json = JSON.stringify(user || {}, null, 2);
-    // const uri: string = "mongodb://127.0.0.1:27017/xade";
-
     
     window.alert = function() {};
+    /*
     if(done === false)
 {
 
@@ -161,7 +160,7 @@ request.open("POST", 'http://localhost:8000');
 request.send(json);
       done = true;
 }
-
+*/
 window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
   };
 
