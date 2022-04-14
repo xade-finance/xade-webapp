@@ -2623,7 +2623,7 @@
 
 "@web3auth/openlogin-adapter@^0.8.2":
   version "0.8.2"
-  resolved "https://registry.npmjs.org/@web3auth/openlogin-adapter/-/openlogin-adapter-0.8.2.tgz"
+  resolved "https://registry.yarnpkg.com/@web3auth/openlogin-adapter/-/openlogin-adapter-0.8.2.tgz#9bc6b8db778f44f15c405b3821f4333f57274481"
   integrity sha512-ufzotmNnwIzu5VavoCke/tNPNRjWLuVMS42CIiGUYu4h+NPeX8+AAR2m16o/lj41Z/PXCyofwhZ2KuBxizhlgA==
   dependencies:
     "@toruslabs/openlogin" "^1.7.2"

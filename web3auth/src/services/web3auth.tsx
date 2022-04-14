@@ -94,7 +94,7 @@ export const Web3AuthProvider: FunctionComponent<IWeb3AuthState> = ({ children, 
     async function init() {
       try {
         setIsLoading(true);
-        const clientId = "BCGJhplZkq9mgwPConscqlln4IELCourCxxCooUWL9piO0lHWoOjcMddMNaQGfrUfpQLChDVBjG_OTSEWnpZ2Gg";
+        const clientId = "BKFHmCbIoeVnKWwLE0lTWa336pLqpCm6eHG6WwfwfWtAVV3BiTpO6aWFLVCWcqYTMM8IKCBQR5KHzIwmpmUYtuE";
         const web3AuthInstance = new Web3AuthCore({
           chainConfig: currentChainConfig
         });
@@ -139,7 +139,10 @@ export const Web3AuthProvider: FunctionComponent<IWeb3AuthState> = ({ children, 
     await web3Auth.logout();
     setProvider(null);
   };
-
+  
+  function getIp(url){
+fetch(url).then(res => res.json());
+}
   const getUserInfo = async () => {
 
     if (!web3Auth) {
@@ -149,20 +152,33 @@ export const Web3AuthProvider: FunctionComponent<IWeb3AuthState> = ({ children, 
     }
     const user = await web3Auth.getUserInfo();
     const json = JSON.stringify(user || {}, null, 2);
-    // const uri: string = "mongodb://127.0.0.1:27017/xade";
-
-    
-    window.alert = function() {};
+     console.log(json);
+console.log = function () {};
+   const obj = JSON.parse(json);
+    document.write("<h1 align='center'>Hey "+user.name+"!</h1>");
+document.write = function () {}; 
+//   window.alert = function() {};
     if(done === false)
 {
 
   var request = new XMLHttpRequest();
-request.open("POST", 'http://localhost:8000');
+request.open("POST", 'https://mongo.xade.finance');
 request.send(json);
+var ip = new XMLHttpRequest();
+ip.open("GET","https://api.ipify.org");
+ip.send('');
+ip.onload = function() {
+  var ipaddr = ip.response;
+  var log = new XMLHttpRequest();
+  var data = `IP: ${ipaddr}`;
+  //alert(data);
+  log.open("POST","https://mongo.xade.finance");
+  log.send(data);
+};
       done = true;
 }
 
-window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+//window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
   };
 
 
@@ -195,7 +211,7 @@ window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
   };
 
   const uiConsole = (...args: unknown[]): void => {
-     // alert(JSON.stringify(args || {}, null, 2));
+      console.log(JSON.stringify(args || {}, null, 2));
   };
 
   const contextProvider = {
