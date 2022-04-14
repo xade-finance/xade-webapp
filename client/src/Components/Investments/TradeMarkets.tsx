@@ -6,13 +6,16 @@ import { hooks, Muon } from '../../DEUS/Synchronizer'
 import {    SymbolOverview } from "react-ts-tradingview-widgets";
 import './TradeMarkets.css'
 import { useParams } from 'react-router-dom'
-import { TextField } from '@material-ui/core'
+import { Button, Input, TextField } from '@material-ui/core'
 
 const SUPPORTED_CHAIN_ID = SupportedChainId.FANTOM
 
 const Trade = () => {
     const [market, setMarket] = React.useState('');
     const [currency, setCurrency] = React.useState('');
+    const [ buy, setBuy] = React.useState(true);
+    const [ sell, setSell] = React.useState(true);
+    
 
 
     let { id } = useParams() || '0x399aeb2FF88cD66564ee1BCc03185Ca5d712572B';
@@ -29,28 +32,45 @@ const Trade = () => {
     const handleChangeCurrency = (event:any): void => {
         event.preventDefault();
         let input = event.target.value;
+        
         if( !input || (input[input.length-1].match('[0-9]') && input[0].match('[1-9]')))
-            setCurrency(input)
-
+           setCurrency(input)
+           if (input !== ""){
+            setBuy(false)
+        }else{
+            setBuy(true)
+        }     
     }
 
-    
+
     const handleChangeMarket = (event:any): void => {
       console.log(market)
       event.preventDefault();
       let input = event.target.value ;
+     
       if( !input || ( input[input.length-1].match('[0-9]') && input[0].match('[1-9]')) )
         setMarket(input)
 
-    if(list.open === true)
-    {
-        console.log('hi')
-        setCurrency((parseInt(list.price) * parseInt(input)).toString())
+
+    // if(list.open === true)
+    // {
+    //     console.log('hi')
+    //     setMarket((parseInt(list.price) * parseInt(input)).toString())
+    // }
+    if (input !== ""){
+        setSell(false)
+    }else{
+        setSell(true)
     }
+
     }
 
     console.log(list)
+
+    
+    
     return (
+        
     <div className="trade-markets-center">
         
        <div className = 'trade-markets'> 
@@ -97,10 +117,35 @@ const Trade = () => {
             label={`Enter amount in ${list.ticker}`} 
             variant="standard" 
             value = {market}
+
+            
         />
         </div>
         
         </div>
+        <div className='button-direction' >
+    <div ><button 
+        className='button' 
+        disabled ={buy}
+        onClick={()=>console.log("hello")}
+        >Buy
+    
+    
+    
+    </button></div>
+    <div ><button className='button1' 
+    disabled ={sell}
+    onClick={()=>console.log("hello")}
+    >Sell 
+    
+    
+    
+    </button>  </div>
+    
+     </div>
+     <div className= 'confirm-button-div'>
+        <button className='confirm-button' >Confirm order</button>
+    </div>
         </div>
     </div>
     
