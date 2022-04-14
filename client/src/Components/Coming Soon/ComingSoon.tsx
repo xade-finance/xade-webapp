@@ -10,9 +10,7 @@ const ComingSoon = () => {
     <hr/>
     <p>Stay Tuned</p>
   </div>
-  <div className="bottomleft">
-    
-  </div>
+
 </div>
 
   
