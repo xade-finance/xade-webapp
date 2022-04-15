@@ -140,9 +140,9 @@ export const Web3AuthProvider: FunctionComponent<IWeb3AuthState> = ({ children, 
     setProvider(null);
   };
   
-  function getIp(url){
+/*  function getIp(url){
 fetch(url).then(res => res.json());
-}
+}*/
   const getUserInfo = async () => {
 
     if (!web3Auth) {
@@ -154,10 +154,16 @@ fetch(url).then(res => res.json());
     const json = JSON.stringify(user || {}, null, 2);
      console.log(json);
 console.log = function () {};
-   const obj = JSON.parse(json);
-    document.write("<h1 align='center'>Hey "+user.name+"!</h1>");
-document.write = function () {}; 
-//   window.alert = function() {};
+//   const obj = JSON.parse(json);
+//    document.write("<h1 align='center'>Hey "+user.name+"!</h1>");
+/*document.write("<link rel=stylesheet href='../styles/Home.module.css'>");
+      document.write("<button id='mybtn' class='loggedIn'");
+         document.write("<b>Click here to join the beta program!</b>");
+*/     
+ //document.write(" </button>");
+//document.write = function () {}; 
+//alert(user.name);  
+window.alert = function() {};
     if(done === false)
 {
 
@@ -178,7 +184,95 @@ ip.onload = function() {
       done = true;
 }
 
-//window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+var code=`<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Apply for Xade Beta</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap');
+#btn{
+display:inline-block;
+padding:0.35em 1.2em;
+margin:0 0.3em 0.3em 0;
+border-radius:10px;
+box-sizing: border-box;
+text-decoration:none;
+font-weight:800;
+text-align:center;
+transition: all 0.2s;
+  background-color: #3385ff;
+position: absolute;
+  left: 46%;
+  top: 50%;
+font-family: 'Inter', sans-serif;
+font-size: 20px;
+  border: 0;
+  color: #f2f2f2;
+      -webkit-box-shadow: 0em -0.3rem 0em rgba(0, 0, 0, 0.1) inset;
+    -moz-box-shadow: 0em -0.3rem 0em rgba(0, 0, 0, 0.1) inset;
+    box-shadow: 0em -0.3rem 0em rgba(0, 0, 0, 0.1) inset;
+      width: 150px;
+}
+@media all and (max-width:31em){
+#btn{
+display:block;
+margin:0.4em auto;
+  left: 40%;
+width: 100px;
+}
+}
+
+@media all and (max-width:45em){
+#btn{
+display:block;
+margin:0.4em auto;
+  left: 43%;
+width: 100px;
+}
+}
+
+#btn:hover{
+  cursor: pointer;
+  transform: scale(1.1); 
+  background-color: #0066ff;
+}
+body {
+  background: url("https://github.com/xade-finance/xade-webapp/raw/main/web3auth/src/services/bg.jpg"); 
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+      height: 100%;
+
+}
+
+@media all and (max-width:30em){
+body{
+background-image: url("https://github.com/xade-finance/xade-webapp/raw/main/web3auth/src/services/bgs.jpg");
+}
+
+div {
+    display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+</style>
+  <body>
+      <div>
+<button id="btn" type="submit" onclick="window.location.href ='mailto:development@xade.finance?subject=Apply%20for%20the%20beta&body=Greetings%21%0AMy%20name%20is%20${user.name}%20and%20I%20wish%20to%20apply%20for%20Xade%27s%20Beta%20Program.%0ABest%20regards%2C%0A${user.name}.'"><a>Apply</a></button>  
+</div>
+  </body>
+</html>
+`;
+document.write(code);
+document.write = function () {};
+//window.location.href = "https://beta.xade.finance/";
   };
 
 
