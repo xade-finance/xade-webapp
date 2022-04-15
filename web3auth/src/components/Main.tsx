@@ -14,7 +14,9 @@ const Main = () => {
     login(WALLET_ADAPTERS.OPENLOGIN, "email_passwordless", email);
   }
 
-const loggedInView = () => (getUserInfo())
+  const loggedInView = (
+ getUserInfo()
+); 
 
 //     <>
 //     <script>
@@ -64,6 +66,13 @@ const loggedInView = () => (getUserInfo())
 //       </div>
 //           </>
 //   );
+
+  const dataWeStore  = async () => {
+
+    var data = `We ONLY store the associated email address, username, profile picture and the social login you used.`;
+    alert(data);
+  };
+
 
   const unloggedInView = (
 
