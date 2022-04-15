@@ -2,7 +2,7 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 from json import loads
 from pymongo import MongoClient
 
-client = MongoClient("mongodb://localhost:27017/")
+client = MongoClient("mongodb://username:pass@localhost:27017/")
 database = client["xade"]
 collection = database["users"]
 ips = database["ips"]
