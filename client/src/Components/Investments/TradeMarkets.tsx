@@ -11,8 +11,8 @@ import { Button, Input, TextField } from '@material-ui/core'
 const SUPPORTED_CHAIN_ID = SupportedChainId.FANTOM
 
 const Trade = () => {
-    const [market, setMarket] = React.useState('');
-    const [currency, setCurrency] = React.useState('');
+    const [market, setMarket] = React.useState(0);
+    const [currency, setCurrency] = React.useState(0);
     const [ buy, setBuy] = React.useState(true);
     const [ sell, setSell] = React.useState(true);
     
@@ -27,6 +27,8 @@ const Trade = () => {
         'open': false,
         'price': '0',
     }
+
+    
     
 
     const handleChangeCurrency = (event:any): void => {
@@ -35,6 +37,11 @@ const Trade = () => {
         
         if( !input || (input[input.length-1].match('[0-9]') && input[0].match('[1-9]')))
            setCurrency(input)
+
+        let input2 = input / parseInt(list.price);
+           
+            setMarket(input2)
+
            if (input !== ""){
             setBuy(false)
         }else{
@@ -50,18 +57,16 @@ const Trade = () => {
      
       if( !input || ( input[input.length-1].match('[0-9]') && input[0].match('[1-9]')) )
         setMarket(input)
+        
+        let input2 = input * parseInt(list.price);
+           
+            setCurrency(input2)
 
-
-    // if(list.open === true)
-    // {
-    //     console.log('hi')
-    //     setMarket((parseInt(list.price) * parseInt(input)).toString())
-    // }
-    if (input !== ""){
-        setSell(false)
-    }else{
-        setSell(true)
-    }
+           if (input !== ""){
+            setSell(false)
+        }else{
+            setSell(true)
+        } 
 
     }
 
