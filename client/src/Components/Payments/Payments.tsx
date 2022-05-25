@@ -38,7 +38,9 @@ const Payments = () => {
 					<span>Your Transaction</span> History
 				</div>
 				{history == false ? (
-					<div className='msg'>All your transactions will be shown here.</div>
+					<div>
+						<div className='msg'>All your transactions will be shown here.</div>
+					</div>
 				) : (
 					''
 				)}

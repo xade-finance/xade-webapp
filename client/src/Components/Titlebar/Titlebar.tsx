@@ -7,13 +7,20 @@ class Titlebar extends Component {
 			<>
 				<div className='navBar'>
 					<div className='navLink payments'>
-						<img
-							alt='payment'
-							src={process.env.PUBLIC_URL + '/images/transaction.svg'}
-						/>
+						<a href='/payment'>
+							<img
+								alt='payment'
+								src={process.env.PUBLIC_URL + '/images/transaction.svg'}
+							/>
+						</a>
 					</div>
 					<div className='navLink home'>
-						<img alt='home' src={process.env.PUBLIC_URL + '/images/home.svg'} />
+						<a href='/'>
+							<img
+								alt='home'
+								src={process.env.PUBLIC_URL + '/images/home.svg'}
+							/>
+						</a>
 					</div>
 					<div className='navLink investment'>
 						<img
