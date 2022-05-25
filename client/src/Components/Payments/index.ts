@@ -1,3 +1,3 @@
-import Home from './Home';
+import Payments from './Payments';
 
-export default Home;
+export default Payments;

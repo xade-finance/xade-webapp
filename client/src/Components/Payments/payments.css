@@ -9,35 +9,37 @@
 	--accent1: #2993e4;
 	color: var(--secondary);
 	width: 100vw;
-}
-.homeContainer .name {
-	text-align: left;
-	margin: 1rem 0.5rem;
-	font-size: 1.5rem;
+	height: 100vh;
+	background-color: var(--primary);
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -10;
+	overflow: hidden;
 }
 
 /* Funds */
 
 .funds {
 	display: flex;
-	height: 30vh;
+	height: 50vh;
 	/* justify-content: center; */
-	margin: 5vh 0;
+	margin: 5vh 0 1vh 0;
 	align-items: center;
 	position: relative;
 }
 .funds .info {
 	width: 30vw;
-	height: 15vh;
+	height: 40vh;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
-	margin: 0.5rem 0 4rem 3vw;
+	/* justify-content: center; */
 	background-color: var(--primary);
 	border-radius: 30px;
 }
-.funds .info span {
+.funds .info .checking-account {
 	font-size: 1.3rem;
+	margin-top: 5vh;
 }
 .funds .info .checking {
 	font-weight: 600;
@@ -51,7 +53,7 @@
 	margin-left: 0;
 }
 .funds .info .balanceContainer {
-	margin-top: 0.5rem;
+	margin-top: 10vh;
 	text-align: center;
 }
 .funds .amount {
@@ -117,14 +119,22 @@
 }
 
 .homeContainer .history {
-	margin: 5vh 0 0 0;
+	margin: 5vh 2vw 0 2vw;
+	padding: 2vh;
+	border-radius: 30px;
+	background-color: #fff;
 	height: 50vh;
 	color: var(--secondary);
+	overflow-y: scroll;
 }
 
 .homeContainer .history .heading {
 	text-align: center;
 	font-size: 1.5rem;
+}
+
+.homeContainer .history .heading span {
+	font-weight: 600;
 }
 
 .homeContainer .history .msg {
@@ -142,15 +152,9 @@
 		width: 100vw;
 	}
 	.funds .info {
-		height: 15vh;
+		/* height: 40vh; */
 		width: 85vw;
 		margin: 2rem 0 0rem 0;
-	}
-	.funds .line {
-		width: 90%;
-		height: 2px;
-		margin: 2rem 0 1rem 0;
-		display: block;
 	}
 	.funds .buttons {
 		display: flex;
@@ -165,6 +169,6 @@
 		margin: 0 1rem;
 	}
 	.homeContainer .history {
-		margin-top: 2rem;
+		margin-top: 1rem;
 	}
 }

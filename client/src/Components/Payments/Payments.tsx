@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import './home.css';
+import './payments.css';
 
-const Home = () => {
+const Payments = () => {
 	const [balance, setBalance] = useState(0);
 	const [balanceDecimal, setBalanceDecimal] = useState(0);
 	const [history, setHistory] = useState(false);
@@ -9,7 +9,7 @@ const Home = () => {
 		<div className='homeContainer'>
 			<div className='funds'>
 				<div className='info'>
-					<span>
+					<span className='checking-account'>
 						<span className='checking'>Checkings</span>
 						<span> Account </span>
 					</span>
@@ -32,10 +32,11 @@ const Home = () => {
 						Send
 					</a>
 				</div>
-				{/* <div className='line'></div> */}
 			</div>
 			<div className='history'>
-				<div className='heading'>Your Transaction History</div>
+				<div className='heading'>
+					<span>Your Transaction</span> History
+				</div>
 				{history == false ? (
 					<div className='msg'>All your transactions will be shown here.</div>
 				) : (
@@ -46,4 +47,4 @@ const Home = () => {
 	);
 };
 
-export default Home;
+export default Payments;
