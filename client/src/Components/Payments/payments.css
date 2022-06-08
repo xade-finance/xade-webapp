@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+.homeContainer {
+	display: grid;
+	font-family: 'Inter', sans-serif;
+	--primary: #f1f3f4;
+	--secondary: #040106;
+	--accent: #2fa4ff;
+	--accent1: #2993e4;
+	color: var(--secondary);
+	width: 100vw;
+	height: 100vh;
+	background-color: var(--primary);
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -10;
+	overflow: hidden;
+}
+
+/* Funds */
+
+.funds {
+	display: flex;
+	height: 50vh;
+	/* justify-content: center; */
+	margin: 5vh 0 1vh 0;
+	align-items: center;
+	position: relative;
+}
+.funds .info {
+	width: 30vw;
+	height: 40vh;
+	display: flex;
+	flex-direction: column;
+	/* justify-content: center; */
+	background-color: var(--primary);
+	border-radius: 30px;
+}
+.funds .info .checking-account {
+	font-size: 1.3rem;
+	margin-top: 5vh;
+}
+.funds .info .checking {
+	font-weight: 600;
+}
+.funds .info .balance {
+	font-size: 5rem;
+	margin-top: 0.2rem;
+}
+.funds .info .balanceDecimal {
+	font-size: 3rem;
+	margin-left: 0;
+}
+.funds .info .balanceContainer {
+	margin-top: 10vh;
+	text-align: center;
+}
+.funds .amount {
+	display: flex;
+	font-size: 2.5rem;
+	align-items: center;
+	margin: 1rem 10vw 0 10vw;
+	padding: 0.5rem 2rem;
+	border-radius: 20px;
+}
+.funds .amount input {
+	border: none;
+	background-color: var(--primary);
+	font-size: 2rem;
+	width: 70vw;
+	margin: 0.3rem;
+}
+.line {
+	width: 2px;
+	height: 35vh;
+	background-color: var(--accent1);
+	border-radius: 50%;
+	display: none;
+}
+.funds .buttons {
+	margin: 5rem 0 1rem 0;
+	width: 30vw;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	bottom: 0;
+	position: absolute;
+}
+.funds .buttons a {
+	background: #fff;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	color: #777;
+	width: 20vw;
+	height: auto;
+	margin: 2.5rem 10vw 0 0;
+	text-decoration: none;
+	font-size: 2.5rem;
+	font-weight: 600;
+	border: 2px solid var(--accent);
+	border-radius: 20px;
+	padding: 0.5rem 0;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	transition: 0.4s;
+}
+.funds .buttons a i {
+	font-size: 2rem;
+	margin-right: 1rem;
+}
+.funds .buttons a:hover {
+	width: 20.3vw;
+	background: var(--accent1);
+	color: var(--primary);
+}
+
+.homeContainer .history {
+	margin: 5vh 2vw 0 2vw;
+	padding: 2vh;
+	border-radius: 30px;
+	background-color: #fff;
+	height: 50vh;
+	color: var(--secondary);
+	overflow-y: scroll;
+}
+
+.homeContainer .history .heading {
+	text-align: center;
+	font-size: 1.5rem;
+}
+
+.homeContainer .history .heading span {
+	font-weight: 600;
+}
+
+.homeContainer .history .msg {
+	color: #aaa;
+	font-size: 1.1rem;
+	text-align: center;
+	margin-top: 3rem;
+}
+
+@media screen and (max-width: 640px) {
+	.funds {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: 100vw;
+	}
+	.funds .info {
+		/* height: 40vh; */
+		width: 85vw;
+		margin: 2rem 0 0rem 0;
+	}
+	.funds .buttons {
+		display: flex;
+		flex-direction: row;
+		width: 100%;
+		margin: 0rem 0 1rem 0;
+	}
+	.funds .buttons a {
+		font-size: 1.8rem;
+		width: 37vw;
+		height: 10vw;
+		margin: 0 1rem;
+	}
+	.homeContainer .history {
+		margin-top: 1rem;
+	}
+}
