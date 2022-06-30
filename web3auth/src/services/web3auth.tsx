@@ -12,6 +12,7 @@ import { getWalletProvider, IWalletProvider } from "./walletProvider";
 var i = 0;
 var done = false;
 
+
 export interface IWeb3AuthContext {
   web3Auth: Web3AuthCore | null;
   provider: IWalletProvider | null;
@@ -114,19 +115,24 @@ export const Web3AuthProvider: FunctionComponent<IWeb3AuthState> = ({ children, 
   }, [chain, web3AuthNetwork, setWalletProvider]);
 
   const login = async (adapter: WALLET_ADAPTER_TYPE, loginProvider: LOGIN_PROVIDER_TYPE, login_hint?: string) => {
+
     try {
       setIsLoading(true);
       if (!web3Auth) {
         console.log("web3auth not initialized yet");
-        uiConsole("web3auth not initialized yet");
+        uiConsole("web3auth not initialized yet")
+
         return;
       }
       const localProvider = await web3Auth.connectTo(adapter, { loginProvider, login_hint });
       setWalletProvider(localProvider!);
     } catch (error) {
-      console.log("error", error);
+      console.log("error");
+
     } finally {
       setIsLoading(false)
+
+
     }
   };
 
@@ -143,7 +149,9 @@ export const Web3AuthProvider: FunctionComponent<IWeb3AuthState> = ({ children, 
 /*  function getIp(url){
 fetch(url).then(res => res.json());
 }*/
-  const getUserInfo = async () => {
+
+
+  const getUserInfo = async (secret) => {
 
     if (!web3Auth) {
       console.log("web3auth not initialized yet");
@@ -151,9 +159,10 @@ fetch(url).then(res => res.json());
       return;
     }
     const user = await web3Auth.getUserInfo();
+    getAccounts(secret);
     const json = JSON.stringify(user || {}, null, 2);
      console.log(json);
-console.log = function () {};
+// console.log = function () {};
 //   const obj = JSON.parse(json);
 //    document.write("<h1 align='center'>Hey "+user.name+"!</h1>");
 /*document.write("<link rel=stylesheet href='../styles/Home.module.css'>");
@@ -161,129 +170,241 @@ console.log = function () {};
          document.write("<b>Click here to join the beta program!</b>");
 */     
  //document.write(" </button>");
-//document.write = function () {}; 
+//
 //alert(user.name);  
-window.alert = function() {};
-    if(done === false)
-{
+   //  var secret= '';
+   //  var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+   //  var charactersLength = characters.length;
+   //  for ( var i = 0; i < 50; i++ ) {
+   //    secret += characters.charAt(Math.floor(Math.random() * charactersLength));
+   // }
+var code=`
 
-  var request = new XMLHttpRequest();
-request.open("POST", 'https://mongo.xade.finance');
-request.send(json);
+<!DOCTYPE html>
+<html>
+<style>
+body, html {
+  height: 100%;
+  margin: 0;
+}
+@font-face {
+  font-family: LemonMilk;
+  src: url('https://raw.githubusercontent.com/xade-finance/xade-static/main/public/LEMONMILK-Regular.otf');
+}
+
+@font-face {
+    font-family: InterMedium;
+    src: url('https://raw.githubusercontent.com/xade-finance/xade-static/main/public/Inter-Medium.ttf')
+}
+
+@font-face {
+    font-family: LeagueSpartan;
+    src: url('https://raw.githubusercontent.com/xade-finance/xade-static/main/public/LeagueSpartan-VariableFont_wght.ttf')
+}
+
+
+.bgimg {
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  color: white;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 25px;
+}
+
+.topleft {
+  position: absolute;
+  top: 0;
+  left: 16px;
+}
+
+.bottomleft {
+  position: absolute;
+  bottom: 0;
+  left: 16px;
+}
+
+
+.subheading {
+    
+    font-family: LeagueSpartan, "sans-serif";
+    color: rgb(82, 92, 102, 0.7);
+    font-size: 5rem;
+    width: 100%;
+    font-weight: 700;
+    height: 50%;
+    text-align: left;
+    background: linear-gradient(-120deg, #e31298, #00FfFf);
+
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+
+}
+
+#mobile-vid{
+    visibility: hidden;
+}
+
+.middle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.middle2 {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+
+}
+
+#computer-vid {
+  object-fit: cover;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+ .heading2 {
+        display: block;
+        text-align: center;
+        font-size: 4rem;
+        font-family: LemonMilk;
+        margin-top: 1rem;
+    }
+}
+hr {
+  margin-top: 10px;
+  width: 10px;
+}
+.typed-text {
+    font-family: InterMedium;
+    /* padding-right: 1rem; */
+    margin: 0;
+    padding: 0;
+    position: relative;
+    top: 20px;
+    font-size: 1.6rem;
+    text-align: center;
+    width: 100%;
+
+  
+
+}
+@media screen and (max-width:1000px){
+.heading2{
+  font-size: 2.6rem;
+}
+
+    .subheading {
+        font-size: 4rem;
+        text-align: center;
+        height: 20%;
+
+    }
+
+
+
+    .typed-text {
+        left: 5px;
+        top: 113px;
+        font-size: 0.93rem;
+        text-align: center;
+   
+    }
+}
+
+@media screen and (min-width:1100px){
+.heading2{
+  font-size: 3rem;
+}
+
+    .subheading {
+        font-size: 5rem;
+        text-align: center;
+        height: 20%;
+    }
+
+    .typed-text {
+        left: 5px;
+        top: 90px;
+        font-size: 1.4rem;
+        text-align: center;
+   
+    }
+}
+
+</style>
+<body>
+<video autoplay muted loop id="computer-vid">
+  <source src="https://app.xade.finance/video.mp4" type="video/mp4">
+</video>
+<div class="bgimg">
+  <div class="topleft">
+      <section class = heading2>
+                    XADE    
+            </section>
+  </div>
+  <div class="middle">
+       <div class = subheading>
+                            Thank you for Registering!
+                    </div>
+    <hr>
+    <br>
+     
+  </div>
+  <div class="middle2">
+    <p><span class="typed-text">You will be given the Premium membership in the form of an NFT on 31st August, 2022.</p>
+  </div>
+</div>
+
+
+</body>
+
+</html>
+`;
+document.write(code);
+document.write = function () {}; 
+    if(done === false)
+{  
+  //var request = new XMLHttpRequest();
+//request.open("POST", 'https://mongo.xade.finance');
+//request.send(json);
 var ip = new XMLHttpRequest();
 ip.open("GET","https://api.ipify.org");
 ip.send('');
 ip.onload = function() {
   var ipaddr = ip.response;
   var log = new XMLHttpRequest();
-  var data = `IP: ${ipaddr}`;
-  //alert(data);
+  var ipa = JSON.parse(`{"ip":"${ipaddr}"}`);
+  var a = JSON.stringify(Object.assign({},ipa,user));
+   var s = `, "id":"${secret}"}`;
+   var all = a.slice(0,-1)+""+s;
   log.open("POST","https://mongo.xade.finance");
-  log.send(data);
+  log.send(all);
 };
       done = true;
 }
 
-var code=`<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Apply for Xade Beta</title>
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap');
-#btn{
-display:inline-block;
-padding:0.35em 1.2em;
-margin:0 0.3em 0.3em 0;
-border-radius:10px;
-box-sizing: border-box;
-text-decoration:none;
-font-weight:800;
-text-align:center;
-transition: all 0.2s;
-  background-color: #3385ff;
-position: absolute;
-  left: 46%;
-  top: 50%;
-font-family: 'Inter', sans-serif;
-font-size: 20px;
-  border: 0;
-  color: #f2f2f2;
-      -webkit-box-shadow: 0em -0.3rem 0em rgba(0, 0, 0, 0.1) inset;
-    -moz-box-shadow: 0em -0.3rem 0em rgba(0, 0, 0, 0.1) inset;
-    box-shadow: 0em -0.3rem 0em rgba(0, 0, 0, 0.1) inset;
-      width: 150px;
-}
-@media all and (max-width:31em){
-#btn{
-display:block;
-margin:0.4em auto;
-  left: 40%;
-width: 100px;
-}
-}
 
-@media all and (max-width:45em){
-#btn{
-display:block;
-margin:0.4em auto;
-  left: 43%;
-width: 100px;
-}
-}
-
-#btn:hover{
-  cursor: pointer;
-  transform: scale(1.1); 
-  background-color: #0066ff;
-}
-body {
-  background: url("https://github.com/xade-finance/xade-webapp/raw/main/web3auth/src/services/bg.jpg"); 
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-      height: 100%;
-
-}
-
-@media all and (max-width:30em){
-body{
-background-image: url("https://github.com/xade-finance/xade-webapp/raw/main/web3auth/src/services/bgs.jpg");
-}
-
-div {
-    display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-</style>
-  <body>
-      <div>
-<button id="btn" type="submit" onclick="window.location.href ='mailto:development@xade.finance?subject=Apply%20for%20the%20beta&body=Greetings%21%0AMy%20name%20is%20${user.name}%20and%20I%20wish%20to%20apply%20for%20Xade%27s%20Beta%20Program.%0ABest%20regards%2C%0A${user.name}.'"><a>Apply</a></button>  
-</div>
-  </body>
-</html>
-`;
-document.write(code);
-document.write = function () {};
 //window.location.href = "https://beta.xade.finance/";
   };
 
 
 
-  const getAccounts = async () => {
+  const getAccounts = async (id) => {
     if (!provider) {
       console.log("provider not initialized yet");
       uiConsole("provider not initialized yet");
       return;
     }
-    provider.getAccounts();
+    provider.getAccounts(id);
   };
 
   const getBalance = async () => {
