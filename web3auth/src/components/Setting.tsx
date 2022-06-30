@@ -57,5 +57,3 @@ const Setting = ({ setNetwork, setChain }: IProps) => {
     </div>
   );
 };
-
-export default Setting;
