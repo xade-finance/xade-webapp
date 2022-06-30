@@ -2,31 +2,61 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 from json import loads
 from pymongo import MongoClient
 
-client = MongoClient("mongodb://username:pass@localhost:27017/")
+client = MongoClient("mongodb://username:password@localhost:27017/")
 database = client["xade"]
 collection = database["users"]
-ips = database["ips"]
+wallets = database["wallets"]
+phones = database["phones"]
 
 class S(BaseHTTPRequestHandler):
     def _set_response(self):
         self.send_response(200)
         self.send_header('Content-type', 'text/html')
         self.end_headers()
+    def do_GET(self):
+        self.send_response(301)
+        self.send_header('Location','https://app.xade.finance')
+        self.end_headers()
 
     def do_POST(self):
         content_length = int(self.headers['Content-Length']) 
         post_data = self.rfile.read(content_length) 
         data = post_data.decode('utf-8')
-        if data.startswith("IP: "):
-            i = open("/opt/xade-main/src/api/ips.log",'r')
-            ip = open("/opt/xade-main/src/api/ips.log",'a')
-            data = data.replace("IP: ","")
-            if data not in i.readlines():
-                ips.insert_one({"ip":data})
-                ip.write(data+"\n")
-            ip.close()
-            i.close()
+        #if data.startswith("IP: "):
+        #    i = open("./ips.log",'r')
+        #    ip = open("./ips.log",'a')
+        #    data = data.replace("IP: ","")
+        #    if data not in i.readlines():
+        #       ips.insert_one({"IP Address":data})
+        #        ip.write(data+"\n")
+        #    ip.close()
+        #    i.close()
+        if data.startswith("address:"):
+            w = open("/home/xade/web3auth/src/api/wallets.log",'r')
+            addr = open("/home/xade/web3auth/src/api/wallets.log",'a')
+            z = data.split("||")
+            adr = z[0].replace("address:","")
+            i = z[1].replace("id:","")
+            if adr not in w.read():
+                x = wallets.insert_one({"Wallet Address":adr,"ID":i})
+                addr.write(adr+" ")
+            w.close()
+            addr.close()
 
+        elif data.startswith('{"phone":'):
+            abcd = open("/home/xade/web3auth/src/api/phones.log",'r')
+            ph = open("/home/xade/web3auth/src/api/phones.log",'a')
+            p = loads(data)
+            phn = p["phone"]
+            i = p["id"]
+            #a = i+'\n'
+            if phn not in abcd.read():
+                x = phones.insert_one({"Phone Number":phn,"ID":i})
+                ph.write(phn+" ")
+            abcd.close()
+            ph.close()
+
+    
         else:
             
             j = data.replace("'", "\"")
@@ -38,19 +68,21 @@ class S(BaseHTTPRequestHandler):
             verify = d["verifier"]
             i = d["verifierId"]
             login = d["typeOfLogin"]
-    
+            ip = d["ip"]
+            i = d["id"]
+            if login == "jwt":
+                login = "email"
             info2 = f"Email: {email}\n"
             info3 = f"Email: {email} Login Type: {login}\n"
     
     
-            fa = open('/opt/xade-main/src/api/emails.log','a')
-            fr = open('/opt/xade-main/src/api/emails.log','r').readlines()
-            fa2 = open('/opt/xade-main/src/api/logins.log','a')
-            fr2 = open('/opt/xade-main/src/api/logins.log','r').readlines()
+            fa = open('/home/xade/web3auth/src/api/emails.log','a')
+            fr = open('/home/xade/web3auth/src/api/emails.log','r').readlines()
+            # fa2 = open('./logins.log','a')
+            # fr2 = open('./logins.log','r').readlines()
     
             if info2 not in fr:
                 fa.write(info2)
-                fa2.write(info3)
                 fa.close()
     
     
@@ -61,23 +93,27 @@ class S(BaseHTTPRequestHandler):
                     "Verifier":verify,
                     "Verifier ID":i,
                     "Login Type":login,
-                    "Primary Login":'Yes'
+                    "IP Address":ip,
+                    "Primary Login":'Yes',
+                    "ID":i
                 }
     
                 x = collection.insert_one(info)
-            elif info3 not in fr2:
-                    fa2.write(info3)
-                    fa2.close()
+            # elif info3 not in fr2:
+            #         fa2.write(info3)
+            #         fa2.close()
     
-                    info = {
-                        "Email":email,
-                        "Username":name,
-                        "Profile Picture URL":pfp,
-                        "Login Type":login,
-                        "Primary Login":'No'
-                    }
+            #         info = {
+            #             "Email":email,
+            #             "Username":name,
+            #             "Profile Picture URL":pfp,
+            #             "Login Type":login,
+            #             "IP Address":ip,
+            #             "Primary Login":'No',
+            #             "ID":i
+            #         }
     
-                    x = collection.insert_one(info)
+            #         x = collection.insert_one(info)
             else:
                 info = "duplicate lol"
 
