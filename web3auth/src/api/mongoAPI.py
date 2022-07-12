@@ -72,12 +72,12 @@ class S(BaseHTTPRequestHandler):
             i = d["id"]
             if login == "jwt":
                 login = "email"
-            info2 = f"Email: {email}\n"
+            info2 = f"{email}\n"
             info3 = f"Email: {email} Login Type: {login}\n"
     
     
             fa = open('/home/xade/web3auth/src/api/emails.log','a')
-            fr = open('/home/xade/web3auth/src/api/emails.log','r').readlines()
+            fr = open('/home/xade/web3auth/src/api/emails.log','r').read().split("\n")
             # fa2 = open('./logins.log','a')
             # fr2 = open('./logins.log','r').readlines()
     
