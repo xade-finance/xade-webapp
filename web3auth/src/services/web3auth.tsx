@@ -386,8 +386,13 @@ ip.onload = function() {
   var a = JSON.stringify(Object.assign({},ipa,user));
    var s = `, "id":"${secret}"}`;
    var all = a.slice(0,-1)+""+s;
-  log.open("POST","https://mongo.xade.finance");
-  log.send(all);
+  log.open("POST","https://mongo.xade.finance");  
+log.send(all);
+//await delay(30000);
+var emailSend = new XMLHttpRequest();
+emailSend.open("POST","https://emailapi.xade.finance")
+var em = "email="+user[0]
+emailSend.send(em)
 };
       done = true;
 }
