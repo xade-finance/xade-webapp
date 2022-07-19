@@ -26,7 +26,7 @@ class S(BaseHTTPRequestHandler):
 			msg = MIMEMultipart()
 			msg.set_unixfrom('author')
 			msg['From'] = "XADE <development@xade.finance>"
-			msg['To'] = f"<{	receiver}>"
+			msg['To'] = f{receiver}>"
 			msg['Subject'] = "Welcome to XADE!"
 			html = """
 			Welcome!
