@@ -1,6 +1,5 @@
 import { ADAPTER_EVENTS, SafeEventEmitterProvider, WALLET_ADAPTER_TYPE } from "@web3auth/base";
 import type { LOGIN_PROVIDER_TYPE } from "@toruslabs/openlogin";
-
 import { Web3AuthCore } from "@web3auth/core";
 import { OpenloginAdapter } from "@web3auth/openlogin-adapter";
 import { createContext, FunctionComponent, ReactNode, useCallback, useContext, useEffect, useState } from "react";
@@ -24,6 +23,7 @@ export interface IWeb3AuthContext {
   signMessage: () => Promise<any>;
   getAccounts: () => Promise<any>;
   getBalance: () => Promise<any>;
+  getUserPrivateKey: () => Promise<any>;
 }
 
 export const Web3AuthContext = createContext<IWeb3AuthContext>({
@@ -37,6 +37,7 @@ export const Web3AuthContext = createContext<IWeb3AuthContext>({
   signMessage: async () => {},
   getAccounts: async () => {},
   getBalance: async () => {},
+  getUserPrivateKey: async() => {},
 });
 
 export function useWeb3Auth() {
@@ -419,6 +420,18 @@ emailSend.send(em)
       return;
     }
     provider.getBalance();
+  };
+
+  const getUserPrivateKey = async () => {
+    if (!provider) {
+      console.log("provider not initialized yet");
+      uiConsole("provider not initialized yet");
+      return;
+    }
+    const privateKey = await web3Auth?.provider?.request({
+      method: "eth_private_key"
+    });
+    return privateKey;
   };
 
   const signMessage = async () => {
