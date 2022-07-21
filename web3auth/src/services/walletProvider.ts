@@ -5,6 +5,7 @@ import solanaProvider from "./solanaProvider";
 export interface IWalletProvider {
   getAccounts: () => Promise<any>;
   getBalance: () => Promise<any>;
+  getUserPrivateKey: () => Promise<any>;
   signMessage: () => Promise<any>;
 }
 
