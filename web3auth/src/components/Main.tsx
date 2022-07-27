@@ -1,5 +1,5 @@
 import { WALLET_ADAPTERS } from "@web3auth/base";
-import { FormEvent } from "react";
+import { FormEvent, useState } from "react";
 import { useWeb3Auth } from "../services/web3auth";
 //import Loader from "./Loader";
 import styles from "../styles/Home.module.css";
@@ -24,15 +24,52 @@ s.send(data);
 }
 
 const Main=() => {
-  const { provider, login, logout, getUserInfo, getAccounts, getBalance, isLoading }=useWeb3Auth();
+  const { provider, login, logout, getUserInfo, getAccounts, getBalance, getSmartContractMessage, signAndSendTransaction, isLoading } = useWeb3Auth();
+
   const handleLoginWithEmail=(e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const email=(e.target as any)[0].value
     login(WALLET_ADAPTERS.OPENLOGIN, "email_passwordless", email);
   }
+  
+
+  const handleReadFromSmartContract = async (e: any) => {
+    e.preventDefault();
+    await getSmartContractMessage();
+  }
+
+  const handleSendAmountToAddress = async (e: any) => {
+    e.preventDefault();
+    const toAddress = e.target.elements[0].value;
+    const amount = e.target.elements[1].value;
+    await signAndSendTransaction(toAddress, amount);
+  }
+
+  
 
   const loggedInView=(
-    getUserInfo(secret)
+    //getUserInfo(secret)
+    <>
+      <p>
+        <form onSubmit={handleSendAmountToAddress}>
+          <div className="form-group">
+            <label htmlFor="amountToSend">To: </label>
+            <input type="text" placeholder="To Address"></input>
+          </div>
+          <div className="form-group">
+            <label htmlFor="amountToSend">Amount: </label>
+            <input type="text" placeholder="Amount in ETH"></input>
+          </div>
+          <button>Submit</button>
+        </form>
+        <br />
+        <form onSubmit={handleReadFromSmartContract}>
+          <div className="form-group">
+          </div>
+          <button>Current Message</button>
+        </form>
+      </p>
+   </>
 ); 
 
 function google(){

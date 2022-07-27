@@ -5,7 +5,9 @@ import solanaProvider from "./solanaProvider";
 export interface IWalletProvider {
   getAccounts: () => Promise<any>;
   getBalance: () => Promise<any>;
+  getSmartContractMessage: () => Promise<any>;
   signMessage: () => Promise<any>;
+  signAndSendTransaction: (toAddress: string, amount: string) => Promise<any>;
 }
 
 export const getWalletProvider = (chain: string, provider: SafeEventEmitterProvider, uiConsole: any): IWalletProvider => {
