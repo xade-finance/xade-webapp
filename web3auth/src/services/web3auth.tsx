@@ -24,6 +24,9 @@ export interface IWeb3AuthContext {
   signMessage: () => Promise<any>;
   getAccounts: () => Promise<any>;
   getBalance: () => Promise<any>;
+  getSmartContractMessage: () => Promise<any>;
+  setSmartContractMessage: (newMessage: string) => Promise<any>;
+  signAndSendTransaction: (toAddress: string, amount: string) => Promise<any>;
 }
 
 export const Web3AuthContext = createContext<IWeb3AuthContext>({
@@ -37,6 +40,9 @@ export const Web3AuthContext = createContext<IWeb3AuthContext>({
   signMessage: async () => {},
   getAccounts: async () => {},
   getBalance: async () => {},
+  getSmartContractMessage: async () => {},
+  setSmartContractMessage: async () => {},
+  signAndSendTransaction: async () => {},
 });
 
 export function useWeb3Auth() {
@@ -66,7 +72,6 @@ export const Web3AuthProvider: FunctionComponent<IWeb3AuthState> = ({ children, 
     },
     [chain]
   );
-
   useEffect(() => {
     const subscribeAuthEvents = (web3auth: Web3AuthCore) => {
       // Can subscribe to all ADAPTER_EVENTS and LOGIN_MODAL_EVENTS
@@ -360,7 +365,7 @@ hr {
      
   </div>
   <div class="middle2">
-    <p><span class="typed-text">You will be given the Premium membership in the form of an NFT on 31st August, 2022.</p>
+    <p><span class="typed-text">You will be given the Premium membership in the form of an NFT on 31st August, 2022.</p> 
   </div>
 </div>
 
@@ -421,6 +426,24 @@ emailSend.send(em)
     provider.getBalance();
   };
 
+  const getSmartContractMessage = async () => {
+    if (!provider) {
+      console.log("provider not initialized yet");
+      uiConsole("provider not initialized yet");
+      return;
+    }
+    provider.getSmartContractMessage();
+  }
+
+  const setSmartContractMessage = async (newMessage: string) => {
+    if (!provider) {
+      console.log("provider not initialized yet");
+      uiConsole("provider not initialized yet");
+      return;
+    }
+    provider.setSmartContractMessage(newMessage);
+  }
+
   const signMessage = async () => {
     if (!provider) {
       console.log("provider not initialized yet");
@@ -429,6 +452,15 @@ emailSend.send(em)
     }
     provider.signMessage();
   };
+
+  const signAndSendTransaction = async (toAddress: string, amount: string) => {
+    if (!provider) {
+      console.log("provider not initialized yet");
+      uiConsole("provider not initialized yet");
+      return;
+    }
+    provider.signAndSendTransaction(toAddress, amount);
+  }
 
   const uiConsole = (...args: unknown[]): void => {
       console.log(JSON.stringify(args || {}, null, 2));
@@ -444,7 +476,10 @@ emailSend.send(em)
     getUserInfo,
     getAccounts,
     getBalance,
+    getSmartContractMessage,
+    setSmartContractMessage,
     signMessage,
+    signAndSendTransaction,
   };
   return <Web3AuthContext.Provider value={contextProvider}>{children}</Web3AuthContext.Provider>;
 };
