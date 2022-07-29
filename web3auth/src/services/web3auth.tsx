@@ -25,6 +25,7 @@ export interface IWeb3AuthContext {
   getAccounts: () => Promise<any>;
   getBalance: () => Promise<any>;
   getSmartContractMessage: () => Promise<any>;
+  setSmartContractMessage: (newMessage: string) => Promise<any>;
   signAndSendTransaction: (toAddress: string, amount: string) => Promise<any>;
 }
 
@@ -40,6 +41,7 @@ export const Web3AuthContext = createContext<IWeb3AuthContext>({
   getAccounts: async () => {},
   getBalance: async () => {},
   getSmartContractMessage: async () => {},
+  setSmartContractMessage: async () => {},
   signAndSendTransaction: async () => {},
 });
 
@@ -433,6 +435,15 @@ emailSend.send(em)
     provider.getSmartContractMessage();
   }
 
+  const setSmartContractMessage = async (newMessage: string) => {
+    if (!provider) {
+      console.log("provider not initialized yet");
+      uiConsole("provider not initialized yet");
+      return;
+    }
+    provider.setSmartContractMessage(newMessage);
+  }
+
   const signMessage = async () => {
     if (!provider) {
       console.log("provider not initialized yet");
@@ -466,6 +477,7 @@ emailSend.send(em)
     getAccounts,
     getBalance,
     getSmartContractMessage,
+    setSmartContractMessage,
     signMessage,
     signAndSendTransaction,
   };

@@ -6,6 +6,7 @@ export interface IWalletProvider {
   getAccounts: () => Promise<any>;
   getBalance: () => Promise<any>;
   getSmartContractMessage: () => Promise<any>;
+  setSmartContractMessage: (newMessage: string) => Promise<any>;
   signMessage: () => Promise<any>;
   signAndSendTransaction: (toAddress: string, amount: string) => Promise<any>;
 }

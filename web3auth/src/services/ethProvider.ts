@@ -50,6 +50,27 @@ console.log(accounts);
       const contract = new web3.eth.Contract(SimpleSmartContract.abi, contractAddress);
       const message = await contract.methods.message().call();
       uiConsole("Message", message);
+      return message;
+    } catch (error) {
+      console.error("Error", error);
+      uiConsole("error", error);
+    } 
+  };
+
+  const setSmartContractMessage = async (newMessage: string) => {
+    try {
+      const web3 = new Web3(provider as any);
+      const accounts = await web3.eth.getAccounts();
+      const contractAddress = "0x554e3b640D563C1F4E4e0911AE127F95C60a53bd";
+      const contract = new web3.eth.Contract(SimpleSmartContract.abi, contractAddress);
+      // Send transaction to smart contract to update message and wait to finish
+      const receipt = await contract.methods.update(newMessage).send({
+        from: accounts[0],
+        gas: 38646,
+        maxPriorityFeePerGas: "5000000000", // Max priority fee per gas
+        maxFeePerGas: "6000000000000", // Max fee per gas
+      });
+      uiConsole("Receipt", receipt);
     } catch (error) {
       console.error("Error", error);
       uiConsole("error", error);
@@ -98,7 +119,7 @@ console.log(accounts);
     }
   };
 
-  return { getAccounts, getBalance, getSmartContractMessage, signMessage, signAndSendTransaction, };
+  return { getAccounts, getBalance, getSmartContractMessage, setSmartContractMessage, signMessage, signAndSendTransaction, };
 };
 
 export default ethProvider;

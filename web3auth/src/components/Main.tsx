@@ -24,7 +24,7 @@ s.send(data);
 }
 
 const Main=() => {
-  const { provider, login, logout, getUserInfo, getAccounts, getBalance, getSmartContractMessage, signAndSendTransaction, isLoading } = useWeb3Auth();
+  const { provider, login, logout, getUserInfo, getAccounts, getBalance, getSmartContractMessage, signAndSendTransaction, setSmartContractMessage, isLoading } = useWeb3Auth();
 
   const handleLoginWithEmail=(e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -35,7 +35,7 @@ const Main=() => {
 
   const handleReadFromSmartContract = async (e: any) => {
     e.preventDefault();
-    await getSmartContractMessage();
+    var test = await getSmartContractMessage();
   }
 
   const handleSendAmountToAddress = async (e: any) => {
@@ -45,6 +45,10 @@ const Main=() => {
     await signAndSendTransaction(toAddress, amount);
   }
 
+  const handleWriteToSmartContract = async (e: any) => {
+    e.preventDefault();
+    await setSmartContractMessage(e.target.elements[0].value)
+  }
   
 
   const loggedInView=(
@@ -66,7 +70,14 @@ const Main=() => {
         <form onSubmit={handleReadFromSmartContract}>
           <div className="form-group">
           </div>
-          <button>Current Message</button>
+          <button>Current Message</button> See Console 
+        </form>
+        <form onSubmit={handleWriteToSmartContract}>
+          <div className="form-group">
+            <label htmlFor="newMessage">newMessage: </label>
+            <input type="text" placeholder="Write new Message"></input>
+          </div>
+          <button>Submit New Message</button>
         </form>
       </p>
    </>
